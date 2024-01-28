@@ -8,6 +8,7 @@ from aiogram.types import FSInputFile
 
 from core.keybord.reply import help_keyboard, fraction, week
 from core.settings import settings
+from core.keybord.inline import select_book
 
 
 async def start_bot(bot: Bot):
@@ -92,7 +93,7 @@ async def start():
     async def send_photo_with_text(message: types.Message):
         photo = FSInputFile(r'core/IMAGE/mi.jpg')
         await bot.send_photo(chat_id=message.chat.id, photo=photo, caption=f'<tg-spoiler>Какие мы я тут '
-                                                                           f'один</tg-spoiler>')
+                                                                           f'один</tg-spoiler>', reply_markup=select_book)
 
     try:
         await dp.start_polling(bot)
